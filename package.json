@@ -2,11 +2,17 @@
   "name": "whatlyric",
   "version": "1.0.0",
   "description": "Find the lyrics for the songs you love.",
-  "main": "server.js",
+  "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "mocha server/spec.js",
+    "start": "node server/index.js"
   },
   "author": "Leo Thorp",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^3.4.1",
+    "express": "^4.13.3",
+    "mocha": "^2.3.4",
+    "request": "^2.67.0"
+  }
 }
