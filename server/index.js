@@ -1,17 +1,18 @@
 'use strict';
 
 var express = require('express');
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 
-var lyricsNMusicKey = require('serverConfig.js').APIKeys.lyricsNMusic;
+var lyricsNMusicKey = require('./serverConfig.js').APIKeys.lyricsNMusic;
+var handlers = require('./requestHandlers.js');
 
 var app = express();
 
-app.use(bodyParser.json());
-app.use(express.static(__dirname + '../client');
+//app.use(bodyParser.json());
+app.use(express.static(__dirname + '../client'));
 
 //routes
-app.get('/search/*', handlers.handleSearchRequest);  
+app.get('/search*', handlers.handleSearchRequest);  
 //functionality:
 //serve front end files
 //receive search requests from front end
@@ -28,4 +29,6 @@ app.get('/search/*', handlers.handleSearchRequest);
 
 //handleAPIResponse - receives and send to front end 
 
-//possible helpers file  
+//cache results of most recent search; no need to query the API twice 
+
+app.listen(3000);
