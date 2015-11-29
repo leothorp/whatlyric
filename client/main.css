@@ -57,7 +57,7 @@ body {
   border-radius: 4px;
   border: 0px;
   border-color: #D8D8D8;
-  box-shadow: inset 2px 2px 2px 0px #ddd;
+  box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, .1);
   padding: 0px;
   padding-left: 30px;
   font-size: 24px;
@@ -88,11 +88,13 @@ body {
 
 pre {
   font-family: 'Courier New', monospace;
+  border-radius: 6px;
   margin: 30px auto 0px;
-  width: 800px;
+  width: 730px;
   font-size: 16px;
   background-color: white;
   border: 1px solid #E2E6EB;
+  padding: 50px;
 }
 /*.search-button-container {
   display: -webkit-box;
@@ -133,7 +135,7 @@ pre {
   background-color: white;
   width: 730px;
   display: block;
-
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .1);
 }
 
 .results-list li {
