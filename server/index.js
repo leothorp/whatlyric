@@ -9,8 +9,8 @@ var handlers = require('./requestHandlers.js');
 var app = express();
 
 //app.use(bodyParser.json());
-app.use(express.static(__dirname + '../client'));
-
+app.use(express.static(__dirname + '/../client'));
+console.log(__dirname);
 //routes
 app.get('/search*', handlers.handleSearchRequest);  
 //functionality:

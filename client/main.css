@@ -7,6 +7,10 @@ html, body {
   padding: 0;
 }
 
+body {
+  background-color: #EFF1F4;
+}
+
 .header-content span {
   text-transform: uppercase;
   color: #26B091;
@@ -36,3 +40,37 @@ html, body {
   margin-right: auto;
   margin-bottom: 30px;
 }
+
+.search-container {
+  text-align: center;
+}
+#search-bar {
+  width: 730px;
+  height: 82px;
+  margin-top: 30px;
+  /*border-radius: 4px;
+  border-color: #D8D8D8;
+  box-shadow: inset 2px 2px 2px 0px #ddd;
+  padding: 0px;*/
+  padding: 30px;
+  font-size: 24px;
+  font-family: 'Lato', sans-serif;
+}
+
+/*distance between search bar and results list: 5px.  between bar and lyric display: 30px*/
+
+/*input::-webkit-input-placeholder {
+color: red !important;
+}*/
+ 
+/*input:-moz-placeholder {*/ /* Firefox 18- */
+/*color: red !important;  
+}*/
+ 
+/*input::-moz-placeholder { */ /* Firefox 19+ */
+/*color: red !important;  
+}
+*/
+/*input:-ms-input-placeholder {  
+color: red !important;  
+}*/
