@@ -16,7 +16,7 @@ var handleSearchRequest = function(req, res) {
 
 };
 
-var sendSearchResults = function(res, results) {
+var sendSearchResults = function(res, results, error) {
   console.log('inside send search results');
   res.json(results);
 };

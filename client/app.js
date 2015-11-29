@@ -1,6 +1,5 @@
+'use strict';
 
-//state is: search box input, and search results
-//todo: implement "search again?" button that resets the state
 var LyricsSearch = React.createClass({
   getInitialState: function() {
     return {
@@ -14,12 +13,18 @@ var LyricsSearch = React.createClass({
     this.setState({
       searchText: searchInput
     });
-    makeSearchRequest(searchInput, function(results) {
+    if (searchInput.length > 0) {
+      makeSearchRequest(searchInput, function(results) {
+        this.setState({
+          results: results
+        });
+        console.log('search request callback');
+      }.bind(this));
+    } else {
       this.setState({
-        results: results
+        results: []
       });
-      console.log('search request callback');
-    }.bind(this));
+    }  
   },
   onSongSelection: function(lyricSnippet) {
     this.setState({
@@ -29,15 +34,29 @@ var LyricsSearch = React.createClass({
   },
   reset: function() {
     this.replaceState(this.getInitialState());
+    document.getElementById('search-bar').focus();
   },
   render: function() {
-    var resultsOrSelectedLyrics = this.state.resultClicked ? 
-      <SelectedLyrics lyrics={this.state.selectedLyrics} /> : <SearchResults results={this.state.results} onSongSelection={this.onSongSelection} />;
+    var resultsOrSelectedLyrics;
+    var buttonClasses = 'search-again-button';
+    if (this.state.resultClicked) {
+      resultsOrSelectedLyrics = (<SelectedLyrics lyrics={this.state.selectedLyrics} />);
+      
+    } else {
+      resultsOrSelectedLyrics = (<SearchResults results={this.state.results} 
+        onSongSelection={this.onSongSelection} />);
+      buttonClasses += ' hidden';
+    }
+  
     console.log(this.state.searchText);  
     return (
       <div>
-        <SearchBar searchText={this.state.searchText} onSearchInput={this.onSearchInput} />
-        <button className="search-again-button" onClick={this.reset}></button>
+        <div className="v-h-center">  
+          <SearchBar searchText={this.state.searchText} onSearchInput={this.onSearchInput} />
+       
+          <button className={buttonClasses}
+            onClick={this.reset}>Search Again?</button>
+        </div>  
         {resultsOrSelectedLyrics}
       </div>
     )
@@ -45,14 +64,16 @@ var LyricsSearch = React.createClass({
 });
 
 var SearchBar = React.createClass({
+  componentDidMount: function() {
+
+  },
   handleChange: function(event) {
     var userInput = event.target.value;
     this.props.onSearchInput(userInput);
-
   },
   render: function() {
     return (
-      <input type='text' id='search-bar' onChange={this.handleChange} value={this.props.searchText}
+      <input type='text' autoFocus='true' id='search-bar' onChange={this.handleChange} value={this.props.searchText}
         placeholder="What's the name of the song?" />
     )
   }
@@ -63,7 +84,7 @@ var SearchResults = React.createClass({
     var resultEntries = this.props.results.map(function(result, index) {
       return (<SongResult song={result} key={index} onSongSelection={this.props.onSongSelection} />);
     }.bind(this));
-    return (<ul>{resultEntries}</ul>);
+    return (<ul className='results-list'>{resultEntries}</ul>);
   }
 });
 
@@ -98,9 +119,14 @@ var makeSearchRequest = function(query, callback) {
   var searchURL = 'http://localhost:3000/search?track=' + formattedQueryString;
   request.open('GET', searchURL);
   request.onload = function() {
-    console.log('status code: ', this.status);
-    console.log(this.response);
-    callback(JSON.parse(this.response));
+    console.log('response status: ', this.status);
+    console.log('response: ', this.response);
+    if (this.status === 200) {
+      callback(JSON.parse(this.response)); 
+    } else {
+      console.log('invalid response.');
+    }
+    
   };
 
   request.onerror = function() {
