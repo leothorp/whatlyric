@@ -54,14 +54,15 @@ var LyricsSearch = React.createClass({
         <div className="v-h-center">  
           <SearchBar searchText={this.state.searchText} onSearchInput={this.onSearchInput} />
        
-          <button className={buttonClasses}
-            onClick={this.reset}>Search Again?</button>
+          
         </div>  
         {resultsOrSelectedLyrics}
       </div>
     )
   }
 });
+// <button className={buttonClasses}
+//             onClick={this.reset}>Search Again?</button>
 
 var SearchBar = React.createClass({
   componentDidMount: function() {
@@ -105,7 +106,7 @@ var SongResult = React.createClass({
 var SelectedLyrics = React.createClass({
   render: function() {
     return (
-    <p id="selected-lyrics">{this.props.lyrics}</p>
+    <pre id="selected-lyrics">{this.props.lyrics}</pre>
     );
   }  
 });
