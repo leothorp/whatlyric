@@ -4,7 +4,7 @@ var url = require('url');
 var helpers = require('./helpers.js');
 
 var handleSearchRequest = function(req, res) {
-  //will be in form /search?songname=""
+  //will be in form /search?track=""
   console.log('parsed URL: ', url.parse(req.url));
   var queryString = url.parse(req.url).query;
   //possibly check here to see if any search terms were actually sent?
