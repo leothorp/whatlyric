@@ -55,9 +55,9 @@ body {
   padding-right: 153px;
   color: #333537;
   border-radius: 4px;
-  border: 0px;
-  border-color: #D8D8D8;
-  box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, .1);
+  border: 1px solid #E2E6EB;
+ /* border-color: #D8D8D8;*/
+  box-shadow: inset 1px 1px 4px 0px rgba(0, 0, 0, .1);
   padding: 0px;
   padding-left: 30px;
   font-size: 24px;
