@@ -4,15 +4,23 @@
   "description": "Find the lyrics for the songs you love.",
   "main": "server/index.js",
   "scripts": {
-    "test": "mocha server/spec.js",
+    "test": "mocha server/server_tests/liveServerSpec.js",
     "start": "node server/index.js"
   },
   "author": "Leo Thorp",
   "license": "ISC",
-  "dependencies": {
-    "chai": "^3.4.1",
+  "dependencies": { 
     "express": "^4.13.3",
+    "request": "^2.67.0",
+  },
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-react": "^6.0.15",
+    "chai": "^3.4.1",
     "mocha": "^2.3.4",
-    "request": "^2.67.0"
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "webpack": "^1.12.9"
   }
 }

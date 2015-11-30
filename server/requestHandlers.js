@@ -1,24 +1,39 @@
 'use strict';
 
 var url = require('url');
+var request = require('request');
 var helpers = require('./helpers.js');
 
-var handleSearchRequest = function(req, res) {
-  //will be in form /search?track=""
-  console.log('parsed URL: ', url.parse(req.url));
-  var queryString = url.parse(req.url).query;
-  //possibly check here to see if any search terms were actually sent?
-  var searchTerm = queryString.split('=')[1];
-  console.log('search term: ', searchTerm);
-
-  //call helper function which will query the lyrics database
-  helpers.fetchSearchResults(res, searchTerm, sendSearchResults);
-
+//will be in form /search?track="SEARCH_TERMS"
+var handleSearchRequest = function(req, res) { 
+  //parse the url to extract the user's query
+  var queryObject = url.parse(req.url, true).query; 
+  var searchString = queryObject.track;
+  //query the lyrics database.
+  fetchAndSendResults(res, searchString);
 };
 
-var sendSearchResults = function(res, results, error) {
-  console.log('inside send search results');
-  res.json(results);
+//send a search request to the MusicNLyrics API with the user's query,
+//and send the results back to the client.
+var fetchAndSendResults = function(res, query) {
+  var APICallURL = helpers.buildAPICallURL(query);
+  request(APICallURL, function(error, response, body) {
+    if (error) {
+      console.log('error making API call: ', error);
+    }
+    console.log('api call status code: ', response.statusCode);
+    //if the API server is up, use the results received.
+    var searchResults;
+    if (response.statusCode === 200) {
+      searchResults = JSON.parse(body);     
+    //if the API server is down, search the dummy data instead.   
+    } else {
+      console.log('API server is down, providing dummy data.');
+      searchResults = helpers.searchDummyData(query); 
+    }
+    //send results back to the client as JSON.
+    res.json(searchResults);
+  });
 };
 
 module.exports = {
