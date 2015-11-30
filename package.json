@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": { 
     "express": "^4.13.3",
-    "request": "^2.67.0",
+    "request": "^2.67.0"
   },
   "devDependencies": {
     "babel-core": "^6.2.1",
@@ -21,6 +21,7 @@
     "mocha": "^2.3.4",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "webpack": "^1.12.9"
+     "webpack": "^1.12.9"
   }
 }
+

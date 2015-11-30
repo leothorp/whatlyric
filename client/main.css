@@ -11,6 +11,10 @@ html, body {
   padding: 0;
 }
 
+body {
+  background-color: #EFF1F4;
+}
+
 .hidden {
   visibility: hidden;
 }
@@ -23,10 +27,6 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-body {
-  background-color: #EFF1F4;
 }
 
 .header {
@@ -60,7 +60,7 @@ body {
   margin-bottom: 30px;
 }
 
-.search-bar {
+#search-bar {
   width: 730px;
   height: 82px;
   padding-right: 153px;

@@ -83,7 +83,7 @@ var SongSearchMain = React.createClass({
     var request = new XMLHttpRequest();
     //replace special characters with escape sequences for inclusion in the URL.
     var encodedQueryString = encodeURIComponent(query);
-    var searchURL = 'http://localhost:3000/search?track=' + encodedQueryString;
+    var searchURL = window.location.href + 'search?track=' + encodedQueryString;
     request.open('GET', searchURL);
     request.onload = function() {
       if (this.status === 200) {

@@ -21,12 +21,11 @@ var SearchBar = React.createClass({
   //which was provided as a prop
   handleChange: function(event) {
     var userInput = event.target.value;
-    console.log('change. new userinput: ', userInput);
     this.props.onSearchInput(userInput);
   },
   render: function() {
     return (
-      <input type='text' autoFocus='true' className='search-bar' 
+      <input type='text' autoFocus='true' id='search-bar' 
         onChange={this.handleChange} value={this.props.searchText}
         placeholder="What's the name of the song?" />
     )

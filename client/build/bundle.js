@@ -19753,7 +19753,7 @@
 	    var request = new XMLHttpRequest();
 	    //replace special characters with escape sequences for inclusion in the URL.
 	    var encodedQueryString = encodeURIComponent(query);
-	    var searchURL = 'http://localhost:3000/search?track=' + encodedQueryString;
+	    var searchURL = window.location.href + 'search?track=' + encodedQueryString;
 	    request.open('GET', searchURL);
 	    request.onload = function () {
 	      if (this.status === 200) {
@@ -19835,11 +19835,10 @@
 	  //which was provided as a prop
 	  handleChange: function (event) {
 	    var userInput = event.target.value;
-	    console.log('change. new userinput: ', userInput);
 	    this.props.onSearchInput(userInput);
 	  },
 	  render: function () {
-	    return React.createElement('input', { type: 'text', autoFocus: 'true', className: 'search-bar',
+	    return React.createElement('input', { type: 'text', autoFocus: 'true', id: 'search-bar',
 	      onChange: this.handleChange, value: this.props.searchText,
 	      placeholder: 'What\'s the name of the song?' });
 	  }
@@ -19922,7 +19921,6 @@
 	var SongResult = React.createClass({
 	  //pass the clicked song's lyrics to the parent component's onSongSelection method.
 	  handleClick: function (event) {
-	    console.log(this.props.song);
 	    this.props.onSongSelection(this.props.song.snippet);
 	  },
 	  //creates a clickable <li> displaying the song's title and artist.
@@ -19934,7 +19932,6 @@
 	      song.title + ' - ' + song.artist.name
 	    );
 	  }
-
 	});
 
 	module.exports = SongResult;

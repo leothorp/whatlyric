@@ -22,7 +22,6 @@ var React = require('react');
 var SongResult = React.createClass({
   //pass the clicked song's lyrics to the parent component's onSongSelection method.
   handleClick: function(event) {
-    console.log(this.props.song);
     this.props.onSongSelection(this.props.song.snippet);
   },
   //creates a clickable <li> displaying the song's title and artist.
@@ -32,7 +31,6 @@ var SongResult = React.createClass({
       <li onClick={this.handleClick}>{song.title + ' - ' + song.artist.name}</li>
     );
   }
-
 });
 
 module.exports = SongResult;
