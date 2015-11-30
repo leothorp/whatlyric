@@ -1,7 +1,7 @@
 'use strict';
 
-var lyricsNMusicAPIKey = require('./serverConfig.js').lyricsNMusicAPIKey;
-var dummyData = require('./dummyData.js');
+var lyricsNMusicAPIKey = require('./config/serverConfig.js').lyricsNMusicAPIKey;
+var dummyData = require('./dummy_data/dummyData.js');
 
 //find songs in the dummy data whose titles contain the search string (case insensitive)
 var searchDummyData = function(query) {
