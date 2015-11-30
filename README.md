@@ -17,7 +17,7 @@ Or, to run locally:
 
 5.  Navigate to <a>http://localhost:3000/</a> in your favorite web browser. 
 
-Note: If the Music 'n' Lyrics API is down, you'll only be able to search my tiny fake data set.  
+Note: If the Lyrics 'n' Music API is down, you'll only be able to search my tiny fake data set.  
 These are the songs it contains: "Lee Park", "Let It Be", "Letting Go", and "Let's Stay Together".
 Start typing a fragment from anywhere in one of these titles, and the corresponding songs will appear in the 
 results list.  Enjoy!
