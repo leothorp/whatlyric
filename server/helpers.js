@@ -69,6 +69,9 @@ var fetchSearchResults = function(res, query, callback) {
 };
 
 var searchDummyData = function(query) {
+  // if (query.length === 0) {
+  //   return [];
+  // }
   var results = dummyData.filter(function(song) {
     return (new RegExp(query, 'i')).test(song.title);
   });
